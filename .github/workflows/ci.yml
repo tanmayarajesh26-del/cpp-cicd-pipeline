@@ -1,0 +1,36 @@
+name: C++ CI/CD Pipeline
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@v4
+
+      - name: Compile C++ application
+        run: g++ main.cpp -o app
+
+      - name: Run application
+        run: ./app
+
+      - name: Compile automated tests
+        run: g++ test.cpp -o test
+
+      - name: Run automated tests
+        run: ./test
+
+      - name: Package application
+        run: tar -czf cpp-app.tar.gz app
+
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: cpp-application
+          path: cpp-app.tar.gz
