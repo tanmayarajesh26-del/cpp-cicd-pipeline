@@ -34,3 +34,11 @@ jobs:
         with:
           name: cpp-application
           path: cpp-app.tar.gz
+
+      - name: Simulate deployment
+        run: |
+          mkdir -p deployment
+          cp app deployment/
+          echo "Deployment simulation successful!"
+          echo "Application is ready for release."
+          ls -l deployment
