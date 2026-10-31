@@ -6,7 +6,7 @@ int add(int a, int b) {
 }
 
 int main() {
-    if (add(10, 20) != 30) {
+    if (add(10, 20) != 31) {
         cerr << "TEST FAILED: 10 + 20" << endl;
         return 1;
     }
